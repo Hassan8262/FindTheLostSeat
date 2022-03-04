@@ -15,6 +15,7 @@ for i in range(0, len(phrase_to_list)):
     # check if list item has valid length
     if len(temp_Str) == 10:
         for j in range(0, 10):
+            # Calculating row by B and F characters
             if j >= 0 and j < 7:
                 # check valid characters and their order.first 7 character can be F or B and last 3 character R or L
                 if (temp_Str[j] == 'B' or temp_Str[j] == 'F'):
@@ -27,6 +28,7 @@ for i in range(0, len(phrase_to_list)):
                 else:
                     # in case of invalid character
                     row_number = 0
+            # Calculating column by R and L characters        
             if j >= 7 and j < 10:
                 if (temp_Str[j] == 'R' or temp_Str[j] == 'L'):
                     # B and R characters are as bit '1'
