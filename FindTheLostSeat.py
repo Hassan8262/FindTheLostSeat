@@ -9,21 +9,23 @@ phrase_to_list = data.split()
 # define a list with valid seat ID range (not very front not very back)
 # we assume that input data is also in this range
 seat_list = list(range(12, 872))
-# since the arrangment is binary we can calculate seat ID with converting every 10 character to number
+# since the arrangement is binary we can calculate seat ID with converting every 10 character to number
 for i in range(0, len(phrase_to_list)):
     temp_Str = phrase_to_list[i]
-    # check if list item has valid length
+    # check if list item has valid length or not, if not passes to the next number
     if len(temp_Str) == 10:
         for j in range(0, 10):
             # Calculating row by B and F characters
             if j >= 0 and j < 7:
                 # check valid characters and their order.first 7 character can be F or B and last 3 character R or L
                 if (temp_Str[j] == 'B' or temp_Str[j] == 'F'):
-                    # B and R characters are as bit '1'
+                    # B characters are as bit '1'
                     if temp_Str[j] == 'B':
+                        # shift binary number to the left +1 
                         row_number = row_number*2 + 1
-                    # F and L characters are as bit '0'
+                    # F characters are as bit '0'
                     if temp_Str[j] == 'F':
+                        # shift binary number to the left 
                         row_number = row_number*2
                 else:
                     # in case of invalid character
@@ -31,11 +33,13 @@ for i in range(0, len(phrase_to_list)):
             # Calculating column by R and L characters        
             if j >= 7 and j < 10:
                 if (temp_Str[j] == 'R' or temp_Str[j] == 'L'):
-                    # B and R characters are as bit '1'
+                    #  R characters are as bit '1'
                     if temp_Str[j] == 'R':
+                        # shift binary number to the left +1 
                         col_number = col_number*2 + 1
-                    # F and L characters are as bit '0'
+                    #  L characters are as bit '0'
                     if temp_Str[j] == 'L':
+                        # shift binary number to the left 
                         col_number = col_number*2
                 else:
                     # in case of invalid character
